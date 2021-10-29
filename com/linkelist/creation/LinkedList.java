@@ -2,7 +2,7 @@ package com.linkelist.creation;
 
 public class LinkedList {
 
-	Node head;
+	Node head; 
 	int size;
 
 	// method to add node at start
@@ -20,19 +20,19 @@ public class LinkedList {
 	
 	// method to add node at last
 	public void appendNode(int data) {
-		Node temp;
+		Node tail;
 		Node myNode = new Node();
 		myNode.setData(data); 
 		if (head == null) {
 			head = myNode; // assigning value of first node to head
-			temp = myNode;
+			tail = myNode;
 		}
 		else {
-			temp = head;
-			while(temp.getNext() != null) {
-				temp = temp.getNext();
+			tail = head;
+			while(tail.getNext() != null) {
+				tail = tail.getNext();
 			}
-			temp.setNext(myNode);	
+			tail.setNext(myNode);	
 		}
 		size++;
 	}
