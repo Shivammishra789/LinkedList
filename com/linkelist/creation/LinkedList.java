@@ -72,6 +72,26 @@ public class LinkedList {
 		}
 	}
 	
+	// method to remove last element of list
+	public void popLast() {
+		if(head == null) {
+			System.out.println("List is empty");
+		}
+		else if(size == 1) {
+			head = null;
+			size--;
+		}
+		else {
+			Node temp;
+			temp = head;
+			for(int i = 1;i < size - 1; i++) {
+				temp = temp.getNext();
+			}
+			temp.setNext(null);
+			size--;
+		}
+	}
+	
 	// method to check list is empty or not
 	public boolean isEmpty() {
 		if(head == null) {
@@ -110,11 +130,10 @@ public class LinkedList {
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		list.append(56);
+		list.append(30);
 		list.append(70);
-		list.insertAtPos(2,30);
-		list.display();
 		
-		list.pop();
-		list.display(); // displaying node data after deleting first node
+		list.popLast();
+		list.display(); // displaying node data after deleting last node
 	}
 }
