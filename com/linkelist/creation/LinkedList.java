@@ -71,11 +71,30 @@ public class LinkedList {
 			size--;
 		}
 	}
+	
+	// method to check list is empty or not
+	public boolean isEmpty() {
+		if(head == null) {
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	// method to get size of list
+	public int getSize() {
+		return size;
+	}
+	
 
 	// method to display nodes
 	public void display() {
 		Node temp;
-		temp = head;
+		if(isEmpty()) {
+			System.out.println("list is empty");
+		}
+		else {
+			temp = head;
 		while (temp.getNext() != null) { // prints node data till next becomes zero
 			System.out.print(temp.getData());
 			if (temp.getData() != 0) {
@@ -84,7 +103,8 @@ public class LinkedList {
 			temp = temp.getNext();
 		}
 		System.out.println(temp.getData());
-		System.out.println("number of nodes in linkedlist are " + size);
+		System.out.println("number of nodes in linkedlist are " + getSize());
+		}
 	}
 	
 	public static void main(String[] args) {
