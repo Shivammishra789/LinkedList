@@ -4,7 +4,11 @@ public class Node {
 
 	private int data;
 	private Node next;
-
+	
+	public Node() {
+		data = 0;
+		next = null;
+	}
 	public int getData() {
 		return data;
 	}

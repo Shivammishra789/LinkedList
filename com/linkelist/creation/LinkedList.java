@@ -2,11 +2,11 @@ package com.linkelist.creation;
 
 public class LinkedList {
 
-	Node head; 
-	int size;
+	private Node head; 
+	private int size;
 
 	// method to add node at start
-	public void addNode(int data) {
+	public void add(int data) {
 		Node myNode = new Node();
 		myNode.setData(data);  
 		if (head == null) {
@@ -19,7 +19,7 @@ public class LinkedList {
 	}
 	
 	// method to add node at last
-	public void appendNode(int data) {
+	public void append(int data) {
 		Node tail;
 		Node myNode = new Node();
 		myNode.setData(data);
@@ -39,10 +39,10 @@ public class LinkedList {
 	// method to add node at given position 
 	public void insertAtPos(int pos, int data) {
 		if(pos == 1) {
-			addNode(data);
+			add(data);
 		}
 		else if(pos == size+1) {
-			appendNode(data);
+			append(data);
 		}
 		else if(pos > 1 && pos <= size) {
 			Node temp;
@@ -60,10 +60,21 @@ public class LinkedList {
 			}
 		size++;	
 	}
+	
+	// method to delete first node
+	public void pop() {
+		if(head == null) {
+			System.out.println("List is empty");
+		}
+		else {
+			head = head.getNext();
+			size--;
+		}
+	}
 
 	// method to display nodes
 	public void display() {
-		Node temp = new Node();
+		Node temp;
 		temp = head;
 		while (temp.getNext() != null) { // prints node data till next becomes zero
 			System.out.print(temp.getData());
@@ -77,10 +88,13 @@ public class LinkedList {
 	}
 	
 	public static void main(String[] args) {
-		LinkedList numList = new LinkedList();
-		numList.appendNode(56);
-		numList.appendNode(70);
-		numList.insertAtPos(2,30);
-		numList.display();
+		LinkedList list = new LinkedList();
+		list.append(56);
+		list.append(70);
+		list.insertAtPos(2,30);
+		list.display();
+		
+		list.pop();
+		list.display(); // displaying node data after deleting first node
 	}
 }
