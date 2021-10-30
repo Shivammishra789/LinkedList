@@ -17,7 +17,7 @@ public class LinkedList {
 		}
 		size++;
 	}
-	
+
 	// method to add node at last
 	public void append(int data) {
 		Node tail;
@@ -35,7 +35,7 @@ public class LinkedList {
 		}
 		size++;
 	}
-	
+
 	// method to add node at given position 
 	public void insertAtPos(int pos, int data) {
 		if(pos == 1) {
@@ -57,10 +57,10 @@ public class LinkedList {
 		}
 		else {
 			System.out.println("entered position out of range");
-			}
+		}
 		size++;	
 	}
-	
+
 	// method to delete first node
 	public void pop() {
 		if(head == null) {
@@ -71,7 +71,7 @@ public class LinkedList {
 			size--;
 		}
 	}
-	
+
 	// method to remove last element of list
 	public void popLast() {
 		if(head == null) {
@@ -91,7 +91,7 @@ public class LinkedList {
 			size--;
 		}
 	}
-	
+
 	// method to check list is empty or not
 	public boolean isEmpty() {
 		if(head == null) {
@@ -100,12 +100,35 @@ public class LinkedList {
 		else
 			return false;
 	}
-	
+
 	// method to get size of list
 	public int getSize() {
 		return size;
 	}
-	
+
+	// method to search particular data node
+	public void search(int data) {
+		Node temp;
+		int count = 1;
+		if(isEmpty()) {
+			System.out.println("List is empty");
+		}
+		else {
+			temp = head ;
+			while(temp != null) {
+				if(temp.getData() == data) {
+					System.out.println("Data " + data + " is present at node no " + count);
+					break;
+				}
+				count++;
+				temp = temp.getNext();
+			}
+			if(temp == null) {
+				System.out.println("Data is not present in the list");
+			}
+		}
+
+	}
 
 	// method to display nodes
 	public void display() {
@@ -115,25 +138,25 @@ public class LinkedList {
 		}
 		else {
 			temp = head;
-		while (temp.getNext() != null) { // prints node data till next becomes zero
-			System.out.print(temp.getData());
-			if (temp.getData() != 0) {
-				System.out.print("->");
+			while (temp.getNext() != null) { // prints node data till next becomes zero
+				System.out.print(temp.getData());
+				if (temp.getData() != 0) {
+					System.out.print("->");
+				}
+				temp = temp.getNext();
 			}
-			temp = temp.getNext();
-		}
-		System.out.println(temp.getData());
-		System.out.println("number of nodes in linkedlist are " + getSize());
+			System.out.println(temp.getData());
+			System.out.println("number of nodes in linkedlist are " + getSize());
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		list.append(56);
 		list.append(30);
 		list.append(70);
-		
-		list.popLast();
-		list.display(); // displaying node data after deleting last node
+
+		list.search(30); // searching for node number
+
 	}
 }
