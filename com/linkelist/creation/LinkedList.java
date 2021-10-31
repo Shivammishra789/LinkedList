@@ -60,10 +60,35 @@ public class LinkedList {
 		}
 		size++;	
 	}
+	
+	// method to insert data after given data
+	public void insertAfterGivenData(int prevData, int insertData) {
+		Node temp;
+		Node myNode = new Node();
+		myNode.setData(insertData);
+		if(isEmpty()) {
+			System.out.println("List is empty");
+		}
+		else {
+			temp = head ;
+			while(temp != null) {
+				if(temp.getData() == prevData) {
+					myNode.setNext(temp.getNext());
+					temp.setNext(myNode);	
+					size++;
+					break;
+				}
+				temp = temp.getNext();	
+			}
+			if(temp == null) {
+				System.out.println("Data is not present in the list");
+			}
+		}
+	}
 
 	// method to delete first node
 	public void pop() {
-		if(head == null) {
+		if(isEmpty()) {
 			System.out.println("List is empty");
 		}
 		else {
@@ -74,7 +99,7 @@ public class LinkedList {
 
 	// method to remove last element of list
 	public void popLast() {
-		if(head == null) {
+		if(isEmpty()) {
 			System.out.println("List is empty");
 		}
 		else if(size == 1) {
@@ -108,8 +133,8 @@ public class LinkedList {
 
 	// method to search particular data node
 	public void search(int data) {
+		int nodePos = 1;
 		Node temp;
-		int count = 1;
 		if(isEmpty()) {
 			System.out.println("List is empty");
 		}
@@ -117,24 +142,23 @@ public class LinkedList {
 			temp = head ;
 			while(temp != null) {
 				if(temp.getData() == data) {
-					System.out.println("Data " + data + " is present at node no " + count);
+					System.out.println("Data " + data + " is present at node no " + nodePos);
 					break;
 				}
-				count++;
+				nodePos++;
 				temp = temp.getNext();
 			}
 			if(temp == null) {
 				System.out.println("Data is not present in the list");
 			}
 		}
-
 	}
 
 	// method to display nodes
 	public void display() {
 		Node temp;
 		if(isEmpty()) {
-			System.out.println("list is empty");
+			System.out.println("List is empty");
 		}
 		else {
 			temp = head;
@@ -156,7 +180,7 @@ public class LinkedList {
 		list.append(30);
 		list.append(70);
 
-		list.search(30); // searching for node number
-
+		list.insertAfterGivenData(30,40);		
+		list.display();
 	}
 }
